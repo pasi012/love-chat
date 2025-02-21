@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import Webcam from "react-webcam";
 import beepSound from "./assets/video_call.mp3";
@@ -8,25 +8,6 @@ const App = () => {
   const [isModalCallOpen, setIsModalCallOpen] = useState(false);
   const [isModalVideoCallOpen, setIsModalVideoCallOpen] = useState(false);
   const audioRef = useRef(null);
-
-  useEffect(() => {
-    const script1 = document.createElement("script");
-    script1.src = "//pl25927624.effectiveratecpm.com/5b/b1/e6/5bb1e6da6c817d5c028cf1ac3b431d26.js";
-    script1.type = "text/javascript";
-    script1.async = true;
-    document.body.appendChild(script1);
-
-    const script2 = document.createElement("script");
-    script2.src = "//pl25927750.effectiveratecpm.com/21/78/26/21782671c859d88fb32021e1bad677bb.js";
-    script2.type = "text/javascript";
-    script2.async = true;
-    document.body.appendChild(script2);
-
-    return () => {
-      document.body.removeChild(script1);
-      document.body.removeChild(script2);
-    };
-  }, []);
 
   const handleVideoCallClick = () => {
     setIsModalVideoCallOpen(true);
@@ -120,6 +101,7 @@ const App = () => {
               height="auto"
             />
             <button onClick={handleCallMe}>Call Me</button>
+            {/* Audio Element inside Modal */}
             <audio ref={audioRef} src={beepSound} preload="auto"></audio>
           </div>
         </div>
@@ -132,6 +114,7 @@ const App = () => {
             <h2>Call Screen</h2>
             <img src={callImage} alt="Call" />
             <button onClick={handleCallMe}>Call Me</button>
+            {/* Audio Element inside Modal */}
             <audio ref={audioRef} src={beepSound} preload="auto"></audio>
           </div>
         </div>
